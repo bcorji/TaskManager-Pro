@@ -23,10 +23,9 @@ async def read_root():
     return {"message": "Welcome to TaskManager Pro API"}
 
 # Import and include routers
-# from app.routers import auth, tasks, users
-# app.include_router(auth.router, prefix="/api/auth", tags=["Authentication"])
-# app.include_router(tasks.router, prefix="/api/tasks", tags=["Tasks"])
-# app.include_router(users.router, prefix="/api/users", tags=["Users"])
+from app.routers import auth, tasks
+app.include_router(auth.router, prefix="/api/auth", tags=["Authentication"])
+app.include_router(tasks.router, prefix="/api/tasks", tags=["Tasks"])
 
 if __name__ == "__main__":
     import uvicorn
