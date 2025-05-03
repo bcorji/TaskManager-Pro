@@ -9,10 +9,16 @@ from sqlalchemy.orm import Session
 from ..database import get_db
 from ..models.user import User
 
+from os import getenv
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
 # JWT Configuration
-SECRET_KEY = "your-secret-key"  # Change this in production!
+SECRET_KEY = getenv("SECRET_KEY")
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ACCESS_TOKEN_EXPIRE_MINUTES = int(getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
 
 # Password hashing configuration
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
